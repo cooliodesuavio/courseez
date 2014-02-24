@@ -1,4 +1,2 @@
-Hi! Welcome to Courseez. We're trying to maek course registration a simple, easy and enjoyable process.
-Please refer to courseezblog.appspot.com for updates on our progress.
-
-I'm going to add something.
+Hi, welcome to the repo for CourseEZ. We are trying to make course registration a simple process by providing users with optimized schedule plans.
+Please refer to courseezblog.appspot.com for updates on our progress and exciting news!
