@@ -23,6 +23,25 @@ public class courseezdriver {
 		listing.add(new UniqClass(17085,"1200 to 100p 630 to 930p", "MW W","RLM 5.104 ENS 212", "HALLOCK, G", "open"));
 		coursecatalog.put("EE364D", (ArrayList<UniqClass>) listing.clone());
 		listing.clear();
+		listing.add(new UniqClass(17040,"130 to 300p", "MW","WAG 214", "ZHOU, Y", "open"));
+		coursecatalog.put("EE361Q", (ArrayList<UniqClass>) listing.clone());
+		listing.clear();
+		listing.add(new UniqClass(16960,"200 to 330p", "TTH","UTC 3.134", "JULIEN, C", "open"));
+		coursecatalog.put("EE360C", (ArrayList<UniqClass>) listing.clone());
+		listing.clear();
+		listing.add(new UniqClass(5380,"1100 to 1230p", "TTH","UTC 2.102A", "MILLER, H", "open"));
+		listing.add(new UniqClass(5385,"200 to 330p", "TTH","UTC 2.102A", "MILLER, H", "open"));
+		coursecatalog.put("MKT320F", (ArrayList<UniqClass>) listing.clone());
+		listing.clear();
+		for(String course : coursecatalog.keySet()){
+			System.out.println(course+":");
+			for(UniqClass uclass: coursecatalog.get(course)){
+				System.out.println("\t"+uclass.id);
+			}
+		}
+		
+		
+		
 	}
 
 }
