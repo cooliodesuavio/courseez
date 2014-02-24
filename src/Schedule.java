@@ -10,9 +10,18 @@ public class Schedule {
 		coursenames=new ArrayList<String>();
 		courseindexes=new ArrayList<Integer>();
 	}
+	public Schedule(int[][] time,ArrayList<String> coursenames, ArrayList<Integer> courseindexes){
+		this.time=time;
+		this.coursenames=(ArrayList<String>) coursenames.clone();
+		this.courseindexes=(ArrayList<Integer>) courseindexes.clone();
+	}
 	public void addClass(String name, int index){
 		coursenames.add(name);
 		courseindexes.add(index);
+	}
+	public void clear(){
+		coursenames.clear();
+		courseindexes.clear();
 	}
 	public ArrayList<Integer> getIndexes(){
 		return courseindexes;

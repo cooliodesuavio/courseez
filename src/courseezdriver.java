@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
 
 
 public class courseezdriver {
@@ -7,9 +8,9 @@ public class courseezdriver {
 	/**
 	 * @param args
 	 */
-	
+	static HashMap<String, ArrayList<UniqClass>> coursecatalog;
 	public static void main(String[] args) {
-		HashMap<String, ArrayList<UniqClass>> coursecatalog=new HashMap<String, ArrayList<UniqClass>>();
+		coursecatalog=new HashMap<String, ArrayList<UniqClass>>();
 		ArrayList<UniqClass> listing = new ArrayList<UniqClass>();
 		//Example of an addition of class to the HashMap
 		listing.add(new UniqClass(17020,"900 to 1000a 930 to 1230p", "MWF T","CPE 2.212 ENS 307", "JULIEN, C", "open"));
@@ -39,9 +40,36 @@ public class courseezdriver {
 				System.out.println("\t"+uclass.id);
 			}
 		}
-		
-		
-		
+		String[] choices = {"EE364D","EE361Q","MKT320F","EE360C","EE461L"};
+		ArrayList<Schedule> perms = allPermutations(choices,null,0);
+		for(Schedule sc : perms){
+			System.out.println(sc.getNames()+","+sc.getIndexes());
+		}
 	}
-
+	public static ArrayList<Schedule> allPermutations(String[] courses, ArrayList<Schedule> allPossible, int index){
+		if(courses.length == index)
+			return allPossible;
+		int size = coursecatalog.get(courses[index]).size();
+		Schedule tmp = new Schedule();
+		if(allPossible==null){
+			allPossible = new ArrayList<Schedule>(); 	
+			for(int i =0; i<size;i++){
+				tmp.addClass(courses[0], i);
+				allPossible.add(new Schedule(tmp.time,tmp.coursenames,tmp.courseindexes));
+				tmp.clear();
+			}
+			return allPermutations(courses,allPossible,1);
+		}
+		ArrayList<Schedule> temp =new ArrayList<Schedule>();
+		for(Schedule sc : allPossible){
+			for(int j=0;j<size;j++){
+					tmp=new Schedule(sc.time,sc.coursenames,sc.courseindexes);
+					tmp.addClass(courses[index], j);
+					temp.add(new Schedule(tmp.time,tmp.coursenames,tmp.courseindexes));
+					tmp.clear();
+			}
+		}
+		return allPermutations(courses,temp,index+1);
+	}
 }
+
