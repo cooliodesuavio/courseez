@@ -9,6 +9,7 @@ public class courseezdriver {
 		System.out.println("TESTING");
 		int x =0;
 		System.out.println("how does this work?");
+		int p = x+x;
 	}
 
 }
