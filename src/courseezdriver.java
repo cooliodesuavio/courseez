@@ -10,6 +10,7 @@ public class courseezdriver {
 		int x =0;
 		System.out.println("how does this work?");
 		int p = x+x;
+		int y=0;
 	}
 
 }
