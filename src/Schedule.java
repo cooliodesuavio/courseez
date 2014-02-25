@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import java.util.ArrayList;
 
 
@@ -31,7 +30,6 @@ public class Schedule {
 		return coursenames;
 	}
 }
-=======
 import java.util.ArrayList;
 import java.util.HashMap;
 
