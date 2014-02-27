@@ -17,22 +17,22 @@ public class courseezdriver {
 		listing.add(new UniqClass(17025,"900 to 1000a 1230 to 330p", "MWF T","CPE 2.212 ENS 307", "JULIEN, C", "open"));
 		listing.add(new UniqClass(17030,"900 to 1000a 330 to 630p", "MWF T","CPE 2.212 ENS 307", "JULIEN, C", "open"));
 		listing.add(new UniqClass(17035,"900 to 1000a 630 to 930p", "MWF T","CPE 2.212 ENS 307", "JULIEN, C", "open"));
-		coursecatalog.put("EE461L", (ArrayList<UniqClass>) listing.clone());
+		coursecatalog.put("EE461L", new ArrayList<UniqClass>(listing));
 		listing.clear();
 		listing.add(new UniqClass(17075,"1200 to 100p 1200 to 300p", "MW F","RLM 5.104 ENS 212", "HALLOCK, G", "open"));
 		listing.add(new UniqClass(17080,"1200 to 100p 300 to 600p", "MW W","RLM 5.104 ENS 212", "HALLOCK, G", "open"));
 		listing.add(new UniqClass(17085,"1200 to 100p 630 to 930p", "MW W","RLM 5.104 ENS 212", "HALLOCK, G", "open"));
-		coursecatalog.put("EE364D", (ArrayList<UniqClass>) listing.clone());
+		coursecatalog.put("EE364D", new ArrayList<UniqClass>(listing));
 		listing.clear();
 		listing.add(new UniqClass(17040,"130 to 300p", "MW","WAG 214", "ZHOU, Y", "open"));
-		coursecatalog.put("EE361Q", (ArrayList<UniqClass>) listing.clone());
+		coursecatalog.put("EE361Q",  new ArrayList<UniqClass>(listing));
 		listing.clear();
 		listing.add(new UniqClass(16960,"200 to 330p", "TTH","UTC 3.134", "JULIEN, C", "open"));
-		coursecatalog.put("EE360C", (ArrayList<UniqClass>) listing.clone());
+		coursecatalog.put("EE360C",  new ArrayList<UniqClass>(listing));
 		listing.clear();
 		listing.add(new UniqClass(5380,"1100 to 1230p", "TTH","UTC 2.102A", "MILLER, H", "open"));
 		listing.add(new UniqClass(5385,"200 to 330p", "TTH","UTC 2.102A", "MILLER, H", "open"));
-		coursecatalog.put("MKT320F", (ArrayList<UniqClass>) listing.clone());
+		coursecatalog.put("MKT320F", new ArrayList<UniqClass>(listing));
 		listing.clear();
 		/*for(String course : coursecatalog.keySet()){
 			System.out.println(course+":");
@@ -49,7 +49,7 @@ public class courseezdriver {
 		for(Schedule sc : perms){
 			System.out.println("Permutation "+permnum+":");
 			for(int i=0;i<sc.getNames().size();i++){
-				System.out.println("\t"+sc.getNames().get(i)+"\t: "+coursecatalog.get(sc.getNames().get(i)).get(sc.getIndexes().get(i)).times);
+				System.out.println("\t"+sc.getNames().get(i)+"\t: "+coursecatalog.get(sc.getNames().get(i)).get(sc.getIndexes().get(i)).days+"\t: "+coursecatalog.get(sc.getNames().get(i)).get(sc.getIndexes().get(i)).times);
 			}
 			permnum++;
 		}
