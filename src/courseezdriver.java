@@ -42,12 +42,16 @@ public class courseezdriver {
 		}*/
 		
 		
-		String[] choices = {"EE364D","EE361Q","EE461L","MKT320F","EE360C"};
+		String[] choices = {"EE461L","EE361Q","EE364D","MKT320F","EE360C"};
 		ArrayList<Schedule> perms = allPermutations(choices,null,0);
 		
-		
+		int permnum=1;
 		for(Schedule sc : perms){
-			System.out.println(sc.getNames()+","+sc.getIndexes());
+			System.out.println("Permutation "+permnum+":");
+			for(int i=0;i<sc.getNames().size();i++){
+				System.out.println("\t"+sc.getNames().get(i)+"\t: "+coursecatalog.get(sc.getNames().get(i)).get(sc.getIndexes().get(i)).times);
+			}
+			permnum++;
 		}
 		System.out.println("Number of permutations: "+perms.size());
 		
