@@ -7,15 +7,15 @@ import java.util.HashMap;
 public class Schedule {
 	ArrayList<String> coursenames;
 	ArrayList<Integer> courseindexes;
-	boolean time[][];
+	int time[][];
 	public Schedule(){
-		time=new boolean[5][96];//5 days a week; 24 hours at 15 minute intervals
+		time=new int[5][96];//5 days a week; 24 hours at 15 minute intervals
 		coursenames=new ArrayList<String>();
 		courseindexes=new ArrayList<Integer>();
 	}
 	//copy constructor
-	public Schedule(boolean[][] tim,ArrayList<String> coursenames, ArrayList<Integer> courseindexes){
-		time=new boolean[5][96];
+	public Schedule(int[][] tim,ArrayList<String> coursenames, ArrayList<Integer> courseindexes){
+		time=new int[5][96];
 		for(int i=0;i<5;i++){
 			for(int j=0;j<96;j++){
 				this.time[i][j]=tim[i][j];
@@ -30,7 +30,7 @@ public class Schedule {
 		coursenames.add(name);
 		courseindexes.add(index);
 		UniqClass u = coursecatalog.get(name).get(index);
-		if(updateTime(u.days,u.times))
+		if(updateTime(u.days,u.times,u.id))
 			return true;
 		return false;
 	}
@@ -39,7 +39,7 @@ public class Schedule {
 		courseindexes.clear();
 		for(int i=0;i<5;i++)
 			for(int j=0;j<96;j++)
-				time[i][j]=false;
+				time[i][j]=0;
 	}
 	public ArrayList<Integer> getIndexes(){
 		return courseindexes;
@@ -47,7 +47,7 @@ public class Schedule {
 	public ArrayList<String> getNames(){
 		return coursenames;
 	}
-	private boolean updateTime(String days, String tim){
+	private boolean updateTime(String days, String tim, int id){
 		String[] ind_days = days.split("");
 		String[] times = tim.split(" ");
 		int day;
@@ -89,10 +89,10 @@ public class Schedule {
 				stopTime=((stopTime/100) * 4)+((stopTime%100)/15);
 				//go through time matrix to see if a time slot that the class occupies is already occupied
 				for(int j=startTime;j<stopTime;j++){
-					if(this.time[day][j]==true){
+					if(this.time[day][j]!=0){
 						return false;
 					}
-					this.time[day][j]=true;
+					this.time[day][j]=id;
 				}
 			}
 			//move onto the next time listing for class
