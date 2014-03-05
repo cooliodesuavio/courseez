@@ -78,15 +78,18 @@ public class Schedule {
 				char aorp=times[time_ind+2].charAt(times[time_ind+2].length()-1);
 				int stopTime=Integer.parseInt(times[time_ind+2].substring(0, times[time_ind+2].length()-1));
 				if(aorp=='p'){
-					if(startTime<=700){
+					if(startTime<stopTime && stopTime/1200 < 1){
 						startTime+=1200;
-						stopTime+=1200;
 					}
-					else if(stopTime<=500)
+					if(stopTime/1200 < 1)
 						stopTime+=1200;
+					
 				}
+				//System.out.println("Start:"+startTime+" Stop:"+stopTime);
 				startTime=((startTime/100) * 4)+((startTime%100)/15);
 				stopTime=((stopTime/100) * 4)+((stopTime%100)/15);
+				//System.out.println("Start:"+startTime+" Stop:"+stopTime);
+
 				//go through time matrix to see if a time slot that the class occupies is already occupied
 				for(int j=startTime;j<stopTime;j++){
 					if(this.time[day][j]!=0){
