@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>INDEX</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+  </head>
+  <body>
+    <h1>Hello, world!</h1>
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+	<input type="text" id="name" data-provide="typeahead" autocomplete="off"/>
+	<br>
+	<select id="unique">
+	<script type="text/javascript">
+		var	classes = ["461L","360C","361Q"];
+		for(var uclass=0;uclass<classes.length;uclass++){
+			document.write("<option value="+classes[uclass]+">"+classes[uclass]+"</option>");
+		}
+	</script>
+	</select>
+	<script type="text/javascript">
+		document.getElementById("unique").style.visibility="hidden";
+		var names = ['Brendan','Kapil','Ankit','Kevin','Jeremy'];
+		$('#name').typeahead({source:names, 
+							matcher: function(item){
+								var reg = new RegExp('^'+this.query.toLowerCase());
+								if( item.toLowerCase().match(reg) ) return true;
+								else return false;},
+							updater: function(item){
+								document.getElementById("unique").style.visibility="visible";
+								//document.getElementById("unique").style.disabled="false";
+								return item;
+							}
+							});
+								
+		
+	</script>
+	</body>
+</html>
